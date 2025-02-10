@@ -29,23 +29,23 @@ public class CustomerDetailsController {
 	 }
 	 
 	 @PostMapping
-	 public ResponseEntity<CustomerDetails> createCustomerDetails(@RequestBody CustomerDetails customerDetails) {
-	 CustomerDetails savedCustomer = customerDetailsService.createCustomerDetails(customerDetails);
-	 	return new ResponseEntity<>(savedCustomer, HttpStatus.CREATED);
+	 public ResponseEntity<CustomerDetails> createCustomerDetails(@RequestBody CustomerDetails newCustomerDetails) {
+	 CustomerDetails savedCustomerDetails = customerDetailsService.createCustomerDetails(newCustomerDetails);
+	 	return new ResponseEntity<>(savedCustomerDetails, HttpStatus.CREATED);
 	 }
 	 
 	 @PutMapping("/{id}")
-	 public ResponseEntity<CustomerDetails> updateCustomer(@PathVariable Long id, @RequestBody CustomerDetails customerDetails) {
+	 public ResponseEntity<CustomerDetails> updateCustomerDetails(@PathVariable Long id, @RequestBody CustomerDetails newCustomerDetails) {
 		 try {
-			 CustomerDetails updatedCustomer = customerDetailsService.updateCustomerDetails(id, customerDetails);
-			 return new ResponseEntity<>(updatedCustomer, HttpStatus.OK);
+			 CustomerDetails updatedCustomerDetails = customerDetailsService.updateCustomerDetails(id, newCustomerDetails);
+			 return new ResponseEntity<>(updatedCustomerDetails, HttpStatus.OK);
 		 } catch (RuntimeException e) {
 			 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		 }
 	 }
 	 
 	 @DeleteMapping("/{id}")
-	 public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
+	 public ResponseEntity<Void> deleteCustomerDetails(@PathVariable Long id) {
 		 try {
 			 customerDetailsService.deleteCustomerDetails(id);
 			 return new ResponseEntity<>(HttpStatus.NO_CONTENT);

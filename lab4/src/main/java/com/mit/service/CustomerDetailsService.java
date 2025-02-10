@@ -22,8 +22,8 @@ public class CustomerDetailsService {
 		 return customerDetailsRepository.findById(id);
 	 }
 	 
-	 public CustomerDetails createCustomerDetails(CustomerDetails customer) {
-		 return customerDetailsRepository.save(customer);
+	 public CustomerDetails createCustomerDetails(CustomerDetails customerDetails) {
+		 return customerDetailsRepository.save(customerDetails);
 	 }
 
 	 public CustomerDetails updateCustomerDetails(Long id, CustomerDetails newCustomerDetails) {

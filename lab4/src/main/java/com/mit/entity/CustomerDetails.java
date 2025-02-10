@@ -1,9 +1,7 @@
 package com.mit.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 public class CustomerDetails {
@@ -17,7 +15,7 @@ public class CustomerDetails {
 	 private String mobileNo;
 	 private String emailId;
 	 private String countryOrigin;
-	 private String effectiveDate;
+	 private LocalDateTime effectiveDate;
 	 
 	 public Long getId() {
 		 return id;
@@ -51,7 +49,7 @@ public class CustomerDetails {
 		 return countryOrigin;
 	 }
 	 
-	 public String getEffectiveDate() {
+	 public LocalDateTime getEffectiveDate() {
 		 return effectiveDate;
 	 }
 	 
@@ -88,7 +86,7 @@ public class CustomerDetails {
 		 countryOrigin = newCountryOrigin;
 	 }
 	 
-	 public void setEffectiveDate(String newEffectiveDate) {
+	 public void setEffectiveDate(LocalDateTime newEffectiveDate) {
 		 effectiveDate = newEffectiveDate;
 	 }
 	 
