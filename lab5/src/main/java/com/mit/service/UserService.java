@@ -1,11 +1,14 @@
 package com.mit.service;
 
 import com.mit.entity.User;
-
 import com.mit.repository.UserRepository;
+
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,6 +32,17 @@ public class UserService {
 		
 		Direction dir = order.equals("asc") ? Direction.ASC : Direction.DESC;
 		return userRepository.findAll(Sort.by(dir, "name"));
+	}
+	
+	public List<User> getPagedAndSortedUsers(String pageStr, String order) {
+		int pageNumber = Integer.parseInt(pageStr);
+		
+//		List<User> users = getSortedUsers(order);
+		
+		Pageable paging = PageRequest.of(pageNumber, 2, Sort.unsorted());
+	    Page<User> page = userRepository.findAll(paging);
+	    
+	    return page.getContent();
 	}
 
 	public Optional<User> getUserById(Long id) {

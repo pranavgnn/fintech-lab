@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -17,10 +18,14 @@ public class UserController {
 	 private UserService userService;
 	 
 	 @GetMapping
-	 public List<User> getAllUsers(@RequestParam(name = "sort", required = false, defaultValue = "unsorted") String order) {
+	 public List<User> getAllUsers(
+			 @RequestParam(name = "page", required = false, defaultValue = "0") String page,
+			 @RequestParam(name = "sort", required = false, defaultValue = "unsorted") String order
+	 ) {
 		 return userService.getSortedUsers(order);
+//		 return userService.getPagedAndSortedUsers(page, order);
 	 }
-	 
+
 	 @GetMapping("/{id}")
 	 public ResponseEntity<User> getUserById(@PathVariable Long id) {
 		 return userService.getUserById(id)
