@@ -9,7 +9,7 @@ public class UserAddress {
     @Column(name = "ADDRESS_ID")
     private Long addressId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private AddressType addressType;
 
     public Long getAddressId() {

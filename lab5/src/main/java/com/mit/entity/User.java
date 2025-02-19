@@ -1,5 +1,6 @@
 package com.mit.entity;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "user")
@@ -10,8 +11,8 @@ public class User {
     private String name;
     private String gender;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private UserAddress userAddress;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<UserAddress> userAddresses;
 
     public Long getUserId() {
         return userId;
@@ -37,11 +38,11 @@ public class User {
         this.gender = newGender;
     }
 
-    public UserAddress getUserAddress() {
-        return userAddress;
+    public List<UserAddress> getUserAddresses() {
+        return userAddresses;
     }
 
-    public void setUserAddress(UserAddress userAddress) {
-        this.userAddress = userAddress;
+    public void setUserAddresses(List<UserAddress> newUserAddresses) {
+        this.userAddresses = newUserAddresses;
     }
 }

@@ -43,7 +43,7 @@ public class UserService {
 		return userRepository.findById(id).map(user -> {
 			user.setName(newUser.getName());
 			user.setGender(newUser.getGender());
-			user.setUserAddress(newUser.getUserAddress());
+			user.setUserAddresses(newUser.getUserAddresses());
 			return userRepository.save(user);
 		}).orElseThrow(() -> new RuntimeException("User not found with id: " + id));
 	}
